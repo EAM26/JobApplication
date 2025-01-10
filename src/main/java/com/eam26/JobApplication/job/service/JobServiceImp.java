@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class JobServiceImp implements JobService{
 
-    private List<Job> jobs = new ArrayList<>();
+    private final List<Job> jobs = new ArrayList<>();
     private Long id = 0L;
 
     @Override

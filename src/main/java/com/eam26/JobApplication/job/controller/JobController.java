@@ -4,7 +4,6 @@ import com.eam26.JobApplication.job.JobDTO;
 import com.eam26.JobApplication.job.model.Job;
 import com.eam26.JobApplication.job.service.JobService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
