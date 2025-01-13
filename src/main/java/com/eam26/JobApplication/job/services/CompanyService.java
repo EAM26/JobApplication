@@ -1,7 +1,6 @@
 package com.eam26.JobApplication.job.services;
 
 import com.eam26.JobApplication.job.models.Company;
-
 import java.util.List;
 
 public interface CompanyService {

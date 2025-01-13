@@ -4,7 +4,9 @@ import com.eam26.JobApplication.job.models.Company;
 import com.eam26.JobApplication.job.repositories.CompanyRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyServiceImp implements CompanyService {
@@ -17,8 +19,7 @@ public class CompanyServiceImp implements CompanyService {
 
     @Override
     public List<Company> findAll() {
-        List<Company> companies = companyRepository.findAll();
-        return companies;
+        return companyRepository.findAll();
     }
 
     @Override
@@ -33,15 +34,17 @@ public class CompanyServiceImp implements CompanyService {
     }
 
     @Override
-    public boolean updateCompany(Long id, Company updatedCompany) {
-        Company company = companyRepository.findById(id).orElse(null);
-        if(company != null) {
-            company.setName(updatedCompany.getName());
-            company.setDescription(updatedCompany.getDescription());
-            companyRepository.save(company);
+    public boolean updateCompany(Long id, Company company){
+        Optional<Company> companyOptional = companyRepository.findById(id);
+        if(companyOptional.isPresent()) {
+            System.out.println(company.getName());
+            Company companyToUpdate = companyOptional.get();
+            companyToUpdate.setName(company.getName());
+            companyToUpdate.setDescription(company.getDescription());
+            companyToUpdate.setJobs(company.getJobs());
+            companyRepository.save(companyToUpdate);
             return true;
         }
-
         return false;
     }
 
