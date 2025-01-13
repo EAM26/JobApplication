@@ -16,7 +16,7 @@ public class Job {
     private String location;
 
     @ManyToOne
-    @JoinColumn(name = "company_id", nullable = false)
+    @JoinColumn(name = "company_id")
     private Company company;
 
     public Job() {
