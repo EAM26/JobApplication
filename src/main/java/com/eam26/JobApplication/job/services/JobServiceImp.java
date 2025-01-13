@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JobServiceImp implements JobService{
+public class JobServiceImp implements JobService {
 
     private final JobRepository jobRepository;
 
@@ -33,7 +33,7 @@ public class JobServiceImp implements JobService{
 
     @Override
     public boolean deleteJob(Long id) {
-        if(jobRepository.existsById(id)) {
+        if (jobRepository.existsById(id)) {
             jobRepository.deleteById(id);
             return true;
         }
@@ -43,7 +43,7 @@ public class JobServiceImp implements JobService{
     @Override
     public boolean updateJob(Long id, Job updatedJob) {
         Optional<Job> optionalJob = jobRepository.findById(id);
-        if(optionalJob.isPresent()) {
+        if (optionalJob.isPresent()) {
             Job job = optionalJob.get();
             job.setTitle(updatedJob.getTitle());
             job.setDescription(updatedJob.getDescription());
