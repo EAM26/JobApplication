@@ -1,8 +1,7 @@
-package com.eam26.JobApplication.job.controller;
+package com.eam26.JobApplication.job.controllers;
 
-import com.eam26.JobApplication.job.JobDTO;
-import com.eam26.JobApplication.job.model.Job;
-import com.eam26.JobApplication.job.service.JobService;
+import com.eam26.JobApplication.job.models.Job;
+import com.eam26.JobApplication.job.services.JobService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,8 +49,8 @@ public class JobController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateJob(@PathVariable Long id, @RequestBody JobDTO jobDTO) {
-        boolean jobUpdated = jobService.updateJob(id, jobDTO);
+    public ResponseEntity<String> updateJob(@PathVariable Long id, @RequestBody Job job) {
+        boolean jobUpdated = jobService.updateJob(id, job);
         if(jobUpdated) {
             return new ResponseEntity<>("Job successfully updated.", HttpStatus.OK);
         }

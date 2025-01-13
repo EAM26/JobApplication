@@ -1,13 +1,22 @@
-package com.eam26.JobApplication.job.model;
+package com.eam26.JobApplication.job.models;
 
+import jakarta.persistence.*;
+
+@Entity
+//@Table(name = "jobs")
 public class Job {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    public Job() {
+    }
 
     public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
         this.id = id;
@@ -65,4 +74,5 @@ public class Job {
     public void setLocation(String location) {
         this.location = location;
     }
+
 }
