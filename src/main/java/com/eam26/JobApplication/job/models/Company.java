@@ -1,5 +1,6 @@
 package com.eam26.JobApplication.job.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class Company {
     private String description;
 
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
     private List<Job> jobs;
 
     public List<Job> getJobs() {
